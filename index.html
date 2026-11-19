@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Math Puzzle Paint 🎨</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>🎨 Math Puzzle Paint</h1>
+    <p class="tagline">Solve math to unlock the picture — one piece at a time!</p>
+    <p class="header-stats">⭐ <span id="total-stars">0</span> pieces collected</p>
+  </header>
+
+  <main class="layout">
+    <!-- Left column: picture bank + puzzle -->
+    <section class="left-panel">
+      <div class="card bank-card">
+        <h2>1 · Pick a picture</h2>
+        <div id="bank" class="bank" aria-label="Picture bank"></div>
+      </div>
+
+      <div class="card puzzle-card">
+        <h2>2 · Your picture</h2>
+        <div id="puzzle-title" class="puzzle-title"></div>
+        <div id="puzzle" class="puzzle" aria-label="Puzzle picture"></div>
+        <div class="progress-row">
+          <div class="progress-bar"><div id="progress-fill"></div></div>
+          <span id="progress-label" class="progress-label">0 / 20</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right column: math question -->
+    <section class="card question-card">
+      <h2>3 · Solve to earn a piece</h2>
+      <div id="modes" class="modes" role="group" aria-label="Practice mode"></div>
+
+      <form id="question-form" autocomplete="off">
+        <div id="question" class="question" aria-live="polite">…</div>
+        <div class="answer-row">
+          <input id="answer" class="answer" type="text" inputmode="numeric"
+                 pattern="[0-9]*" placeholder="?" aria-label="Your answer" />
+          <button type="submit" id="check" class="btn-primary">Check!</button>
+        </div>
+        <div id="feedback" class="feedback" role="status"></div>
+      </form>
+
+      <p class="hint">💡 A correct answer reveals a random piece of your picture.
+      Collect all <b>20</b> pieces to see it whole!</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <button id="reset" class="linky" type="button">Reset all progress</button>
+  </footer>
+
+  <!-- Celebration overlay -->
+  <div id="overlay" class="overlay hidden" aria-hidden="true">
+    <div class="overlay-card">
+      <div id="overlay-emoji" class="overlay-emoji">🎉</div>
+      <h2 id="overlay-title">You did it!</h2>
+      <p id="overlay-text"></p>
+      <div class="overlay-actions">
+        <button id="overlay-next" class="btn-primary" type="button">Pick a new picture</button>
+        <button id="overlay-keep" class="btn-ghost" type="button">Keep practicing</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confetti-layer" class="confetti-layer" aria-hidden="true"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
